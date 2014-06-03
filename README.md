@@ -1,5 +1,5 @@
 #litmus-api
-Provides methods that correlate with Litmus Customer API. All methods return a promise thanks to the use of the [Bluebird](https://github.com/petkaantonov/bluebird) promise library. Be sure to read their [API docs](https://github.com/petkaantonov/bluebird/blob/master/API.md) to learn about the different methods that can be used. 
+Provides methods that correlate with [Litmus Customer API](http://docs.litmus.com/w/page/18056603/Customer%20API%20documentation). All methods return a promise thanks to the use of the [Bluebird](https://github.com/petkaantonov/bluebird) promise library. Be sure to read the [Bluebird API docs](https://github.com/petkaantonov/bluebird/blob/master/API.md) to learn about the different methods that can be used. 
 
 ## Example
 ```js
