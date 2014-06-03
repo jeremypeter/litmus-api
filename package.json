@@ -1,0 +1,37 @@
+{
+  "name": "node-litmus",
+  "version": "0.0.0",
+  "description": "Harness the power of the Litmus API to send tests to Litmus!",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/jeremypeter/node-litmus.git"
+  },
+  "keywords": [
+    "litmus",
+    "email"
+  ],
+  "author": "Jeremy Peter <jeremywpeter@gmail.com> (http://www.jeremypeterdesigns.com/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jeremypeter/node-litmus/issues"
+  },
+  "homepage": "https://github.com/jeremypeter/node-litmus",
+  "dependencies": {
+    "chalk": "~0.4.0",
+    "cli-table": "~0.3.0",
+    "lodash": "~2.4.1",
+    "xmlbuilder": "~2.2.1",
+    "cheerio": "~0.16.0",
+    "nodemailer": "~0.6.5",
+    "request": "~2.36.0",
+    "bluebird": "~1.2.4"
+  },
+  "devDependencies": {
+    "chai": "~1.9.1",
+    "sinon": "~1.10.2"
+  }
+}

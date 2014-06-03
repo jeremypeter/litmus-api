@@ -1,0 +1,71 @@
+var Litmus = require('../lib/litmus-api');
+var expect = require('chai').expect;
+var sinon = require('sinon');
+var assert = require('assert')
+
+
+describe('Litmus', function(){
+
+  var options = { username: 'username', password: 'password'};
+
+  describe('constructor', function() {
+    it('should throw error if no options are passed in', function(done) {
+      expect(function(){ new Litmus() }).to.throw(Error);
+      done();
+    });
+  });
+
+  describe('#initVars.reqObj.user', function() {
+    
+    it('should return username if available', function(done){
+      var litmus = new Litmus(options);
+      expect(litmus.reqObj.auth.user).to.equal('username');
+      done();
+    });
+
+    it('should return an empty string if no username is passed', function(done){
+      var litmus = new Litmus({});
+      expect(litmus.reqObj.auth.user).to.equal('');
+      done();
+    });
+
+  });
+
+
+  describe('#initVars.reqObj.pass', function() {
+    
+    it('should return password if available', function(done){
+      var litmus = new Litmus(options);
+      expect(litmus.reqObj.auth.pass).to.equal('password');
+      done();
+    });
+
+    it('should return an empty string if no password is passed', function(done){
+      var litmus = new Litmus({});
+      expect(litmus.reqObj.auth.user).to.equal('');
+      done();
+    });
+
+  });
+
+  var obj = {
+    hello: function(){
+      return 'hello';
+    }
+  }
+
+  describe('#request', function() {
+    var litmus = new Litmus({});
+    var stub = sinon.stub(obj, 'hello');
+    var stub2 = sinon.stub(litmus, 'request');
+    stub2.withArgs('GE').returns('tes')
+    it('should ', function(done) {
+      litmus.request('GET', 'https://www.example.com', '<xml></xml>', function(){});
+
+      sinon.assert.calledOnce(litmus.request)
+      // sinon.assert.
+      done();
+    })
+  })
+
+});

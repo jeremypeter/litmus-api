@@ -1,0 +1,86 @@
+TEST SET METHODS 
+------------------
+Tests - returns details of a single test - [GET]
+https://#{company}.litmus.com/tests.xml
+
+Tests/show - returns details of a single test - [GET]
+https://#{company}.litmus.com/tests/#{id}.xml
+
+Tests/destroy - Deletes a test from your account - [DELETE]
+https://#{company}.litmus.com/tests/#{id}.xml
+
+Tests/update - Updates a test in your account. This is used for publishing results publicly or changing a test's title - [PUT] - [Need request body]
+https://#{company}.litmus.com/tests/#{id}.xml
+
+#{id} xml tag = <id>
+
+TEST SET VERSION METHODS
+------------------------
+Versions - Returns all versions for a specified test - [GET]
+https://#{company}.litmus.com/tests/#{test-id}/versions.xml
+
+Versions/show - Returns details of a single version for a particular test - [GET]
+https://#{company}.litmus.com/tests/#{test-id}/versions/#{version}.xml
+
+Versions/create - Creates a new version of a test.
+Creating a new version of a web page test will re-test the same URL immediately. Creating a new version of an email test will return a new email address in the url_or_guid field and the received field will be false. You'll need to send an email to that address for received to become true and your screenshots to be generated. The location field of the headers returned will include a link to the newly created test - [POST]
+https://#{company}.litmus.com/tests/#{test-id}/versions.xml
+
+Versions/poll - To reduce the strain on the Litmus servers, and to reduce the bandwidth you use to check for test completion, there is a special poll method that can be used. The XML document returned will give an indication as to the status of each result. You may want to wait for every result to complete, or you may wish to return each result as it completes. You can check the status of the poll method and fetch the whole test version when the state for a particular result changes - [GET]
+https://#{company}.litmus.com/tests/#{test-id}/versions/#{version}/poll.xml
+
+#{test-id} xml tag = <id type="integer">
+#{version} xml tag = <version type="integer">
+
+RESULT METHODS
+------------------------
+Results - Retrieves the complete collection of results for a particular test and version - [GET]
+https://#{company}.litmus.com/tests/#{test-id}/versions/#{version}/results.xml
+
+Results/show - Used to retrieve details of a single result, useful when used in conjunction with the versions/poll method while waiting for individual results to complete - [GET]
+https://#{company}.litmus.com/tests/#{test-id}/versions/#{version}/results/#{result-id}.xml
+
+Results/update - This method is used to update the properties of a result. Currently the only operation supported by this is to set the compatibility state of a result (whether it appears with a green tick or red cross in the Litmus web interface). This is set via the check_state parameter which support either 'ticked', 'crossed' or 'nostate' as valid values. A result which returns nil for check_state is considered to be 'nostate' - [PUT] - [Request body required]
+https://#{company}.litmus.com/tests/#{test-id}/versions/#{version}/results/#{result-id}.xml
+
+Results/retest - Triggers a retest of just this client. Behaviour differs between page and email tests. For email tests we simply reuse the email source that was sent previously, this means it is best for just attempting to retest if an error occurred with a particular client. For page tests, this will revisit the url supplied when you started the test, meaning that any changes since the original test will be captured. Normally retesting like this is just best when an error occurs, if you've made changes to your email or page then testing by creating a new version is best - [POST]
+https://#{company}.litmus.com/tests/#{test-id}/versions/#{version}/results/#{result-id}/retest.xml
+
+#{test-id} xml tag = <id type="integer">
+#{version} xml tag = <version type="integer">
+#{result-id} xml tag = <result> <id type="integer">
+ 
+EMAIL METHODS
+------------------------ 
+Emails/create - Creates a new email test in your account.
+This will create a new email test, there are a two ways to create a new email test.
+ 
+1. Send your email to Litmus
+ 
+Using this method, there are a few steps to the process of creating an email test and displaying it to the end user, the advantage is that it is that your email will arrive at Litmus in the same way that it will arrive in your customers inbox, via SMTP.
+1. Create the new email test, specifying the email clients you wish to test it on.
+2. Record the new test's ID, and its GUID. 
+3. Send the email that is to be tested, to the address specified in the GUID field.
+4. Poll Litmus on the test's progress. The received field will be set to true when the email has been received by our system. 
+5. Once the test is complete, record the URLs to the result screenshots, and present these to your user. 
+[POST]
+2. Upload your HTML to Litmus
+For this method, you simply supply your email body and subject as part of the XML request to the API. Simply change your request to look like this, everything else remains the same as the example above. - [POST] - [Required body]
+https://#{company}.litmus.com/emails.xml
+
+Emails/clients - Returns a list of email clients available for testing - [GET]
+https://#{company}.litmus.com/emails/clients.xml
+ 
+REPORT METHODS
+------------------------
+Reports/index - Shows a list of the 100 most recent lists you've created within your Litmus account - [GET]
+https://#{company}.litmus.com/reports.xml
+
+Reports/show
+Retrieves a single specified report (campaign). Note that we also include links to download the full report content in CSV format. You can use this to programmatically collect all the data for a campaign that is displayed in our charts and tables - [GET]
+https://#{company}.litmus.com/reports/#{report_id}.xml
+
+Reports/create - Creates a new report if you have available credits - [POST]
+https://#{company}.litmus.com/reports.xml
+ 
+
