@@ -15,7 +15,7 @@ api.getTests()
     });
 ```
 
-## Contructor
+## Constructor
 
 ####`new Litmus(options)`
 
