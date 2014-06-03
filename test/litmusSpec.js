@@ -1,7 +1,7 @@
 var Litmus = require('../lib/litmus-api');
 var expect = require('chai').expect;
 var sinon = require('sinon');
-var assert = require('assert')
+var assert = require('assert');
 
 
 describe('Litmus', function(){
@@ -47,25 +47,5 @@ describe('Litmus', function(){
     });
 
   });
-
-  var obj = {
-    hello: function(){
-      return 'hello';
-    }
-  }
-
-  describe('#request', function() {
-    var litmus = new Litmus({});
-    var stub = sinon.stub(obj, 'hello');
-    var stub2 = sinon.stub(litmus, 'request');
-    stub2.withArgs('GE').returns('tes')
-    it('should ', function(done) {
-      litmus.request('GET', 'https://www.example.com', '<xml></xml>', function(){});
-
-      sinon.assert.calledOnce(litmus.request)
-      // sinon.assert.
-      done();
-    })
-  })
 
 });
