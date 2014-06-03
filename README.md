@@ -1,11 +1,25 @@
 #litmus-api
-Provides methods that correlate with Litmus Customer API. 
+Provides methods that correlate with Litmus Customer API. All methods return a promise thanks to the use of the [Bluebird](https://github.com/petkaantonov/bluebird) promise library. Be sure to read their [API docs](https://github.com/petkaantonov/bluebird/blob/master/API.md) to learn about the different methods that can be used. 
+
+## Example
+```js
+var api = require('litmus-api');
+
+api.getTests()
+    .then(function(data){
+        var response = data[0];
+        var body = data[1];
+        
+        console.log(response);
+        console.log(body);
+    });
+```
 
 ## Contructor
 
 ####`new Litmus(options)`
-**options** is an object that contains your required Litmus credentials.    
 
+`options` - required object that contains your Litmus credentials
 `options.username` - Litmus username    
 `options.password` - Litmus password   
 `options.url` - URL to your Litmus account 

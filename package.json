@@ -1,14 +1,14 @@
 {
-  "name": "node-litmus",
+  "name": "litmus-api",
   "version": "0.0.0",
   "description": "Harness the power of the Litmus API to send tests to Litmus!",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha"
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/jeremypeter/node-litmus.git"
+    "url": "git://github.com/jeremypeter/litmus-api.git"
   },
   "keywords": [
     "litmus",
@@ -17,9 +17,9 @@
   "author": "Jeremy Peter <jeremywpeter@gmail.com> (http://www.jeremypeterdesigns.com/)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/jeremypeter/node-litmus/issues"
+    "url": "https://github.com/jeremypeter/litmus-api/issues"
   },
-  "homepage": "https://github.com/jeremypeter/node-litmus",
+  "homepage": "https://github.com/jeremypeter/litmus-api",
   "dependencies": {
     "chalk": "~0.4.0",
     "cli-table": "~0.3.0",
@@ -32,6 +32,7 @@
   },
   "devDependencies": {
     "chai": "~1.9.1",
-    "sinon": "~1.10.2"
+    "sinon": "~1.10.2",
+    "mocha": "*"
   }
 }
