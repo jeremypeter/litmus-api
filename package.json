@@ -12,7 +12,9 @@
   },
   "keywords": [
     "litmus",
-    "email"
+    "email",
+    "promise",
+    "api"
   ],
   "author": "Jeremy Peter <jeremywpeter@gmail.com> (http://www.jeremypeterdesigns.com/)",
   "license": "MIT",
@@ -21,12 +23,6 @@
   },
   "homepage": "https://github.com/jeremypeter/litmus-api",
   "dependencies": {
-    "chalk": "~0.4.0",
-    "cli-table": "~0.3.0",
-    "lodash": "~2.4.1",
-    "xmlbuilder": "~2.2.1",
-    "cheerio": "~0.16.0",
-    "nodemailer": "~0.6.5",
     "request": "~2.36.0",
     "bluebird": "~1.2.4"
   },
