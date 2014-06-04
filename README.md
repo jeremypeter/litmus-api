@@ -3,7 +3,12 @@ Provides methods that correlate with the [Litmus Customer API](http://docs.litmu
 
 ## Example
 ```js
-var api = require('litmus-api');
+var API = require('litmus-api');
+var api = new API({
+    username: 'username',
+    password: 'password',
+    url: 'https://company.litmus.com'
+});
 
 api.getTests()
     .then(function(data){
