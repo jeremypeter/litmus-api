@@ -48,4 +48,28 @@ describe('Litmus', function(){
 
   });
 
+
+  describe('#request', function() {
+
+    var litmus = new Litmus({});
+    var options = {};
+    options.url = 'http://company.litmus.com'
+
+    beforeEach(function(){ sinon.stub(litmus, 'request'); });
+
+    afterEach(function(){ litmus.request.restore(); });
+
+    it('should match properties', function(done) {
+      
+      options.method = 'GET';
+      litmus.request(options.method, options.url);
+
+      expect(litmus.request.args[0].length).to.equal(2);
+
+      done();
+
+    });
+
+  })
+
 });
