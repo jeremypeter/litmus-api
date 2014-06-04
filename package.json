@@ -1,6 +1,6 @@
 {
   "name": "litmus-api",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "Harness the power of the Litmus API to send tests to Litmus!",
   "main": "index.js",
   "scripts": {

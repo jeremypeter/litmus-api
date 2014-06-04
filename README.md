@@ -3,8 +3,9 @@ Provides methods that correlate with the [Litmus Customer API](http://docs.litmu
 
 ## Example
 ```js
-var API = require('litmus-api');
-var api = new API({
+var Litmus = require('litmus-api');
+
+var api = new Litmus({
     username: 'username',
     password: 'password',
     url: 'https://company.litmus.com'
@@ -285,7 +286,7 @@ Request body example:
 
 <hr>
 
-####`api.getEmailClients()`
+####`api.getBrowserClients()`
 **HTTP Method:** `GET`  
 **Reference:** [http://docs.litmus.com/Customer-API-documentation:-pages-clients](http://docs.litmus.com/Customer-API-documentation:-pages-clients)  
 
